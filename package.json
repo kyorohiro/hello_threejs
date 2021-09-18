@@ -4,24 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prepare": "tsc",
-    "build": "tsc",
-    "start": "ts-node src/index.ts"
+    "dev": "webpack serve  --host 0.0.0.0 --config ./src/client/webpack.dev.js" ,
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyorohiro/hello_threejs.git"
+  },
   "author": "",
   "license": "ISC",
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
+  "bugs": {
+    "url": "https://github.com/kyorohiro/hello_threejs/issues"
+  },
+  "homepage": "https://github.com/kyorohiro/hello_threejs#readme",
+  "dependencies": {
+    "three": "^0.132.2"
   },
   "devDependencies": {
-    "@types/node": "^12.20.25",
-    "husky": "^7.0.2",
-    "prettier": "^2.4.1",
-    "pretty-quick": "^3.1.1",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
+    "@types/three": "^0.131.1",
+    "ts-loader": "^9.2.5",
+    "typescript": "^4.4.3",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1",
+    "webpack-merge": "^5.8.0"
   }
 }
