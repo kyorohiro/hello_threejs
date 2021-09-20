@@ -1,36 +1,34 @@
 import * as THREE from 'three'
+import { TetrahedronGeometry } from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 
 const main = () => {
-    // scene
-    const scene = new THREE.Scene()
-    const camera = new THREE.PerspectiveCamera(
-        75, window.innerWidth / window.innerHeight, 0.1, 1000);
-
+    const width = 960
+    const height = 540
 
     // canvas
     var renderer = new THREE.WebGLRenderer()
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    renderer.setPixelRatio(window.devicePixelRatio)
+    renderer.setSize(width, height)
     document.body.appendChild(renderer.domElement)
 
-    const geometry = new THREE.BoxGeometry()
-    const material = new THREE.MeshBasicMaterial({
-        color: 0x00ff00
-    })
-    const cube = new THREE.Mesh(geometry, material)
-    scene.add(cube)
-    camera.position.z = 5
+    const scene = new THREE.Scene()
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 3000)
+    camera.position.set(0, 1000, 1000)
+    camera.lookAt(0,0,0)
 
-    /*
-    const animate = function () {
-        requestAnimationFrame( animate );
 
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
+    const geometery = new THREE.BoxGeometry(400,400,400)
+    const material = new THREE.MeshNormalMaterial()
+    const box = new THREE.Mesh(geometery, material)
+    scene.add(box)
+    const tick = () =>{
+        box.rotation.y += 0.01
+        renderer.render(scene, camera)
+        requestAnimationFrame(tick)
+    }
+    tick();
 
-        renderer.render( scene, camera );
-    };*/
-    renderer.render( scene, camera );
-    //animate();
+
 }
 main()
